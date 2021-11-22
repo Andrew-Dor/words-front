@@ -1,15 +1,84 @@
 .button {
+    cursor: pointer;
     background-color: red;
+    border-radius: 8px;
+    border: none;
+    color: $white;
+    transition: background-color 0.3s;
+    padding: 0 8px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+    &.small {
+        height: 22px;
+    }
+    
+    &.medium {
+        height: 28px;
+    }
+    
+    &.large {
+        height: 34px;
+    }
+
+    &.square {
+        border-radius: 0;
+    }
+
+    &.primary {
+        background-color: $default_primary_component;
+        border-color: $default_primary_component;
+        color: $default_primary_component;
+        &:hover {
+            background-color: $default_primary_hover_component;
+            border-color: $default_primary_hover_component;
+        }
+    }
+
+    &.success {
+        background-color: $default_success_component;
+        border-color: $default_success_component;
+        color: $default_success_component;
+        &:hover {
+            background-color: $default_success_hover_component;
+            border-color: $default_success_hover_component;
+        }
+    }
+
+    &.error {
+        background-color: $default_error_component;
+        border-color: $default_error_component;
+        color: $default_error_component;
+        &:hover {
+            background-color: $default_error_hover_component;
+            border-color: $default_error_hover_component;
+        }
+    }
+
+    &.warning {
+        background-color: $default_warning_component;
+        border-color: $default_warning_component;
+        color: $default_warning_component;
+        &:hover {
+            background-color: $default_warning_component;
+            border-color: $default_warning_component;
+        }
+    }
+
+    &.outline {
+        background-color: transparent;
+        border-width: 2px;
+        border-style: solid;
+        &:hover {
+            background-color: transparent;
+        }
+    }
+
+    &.defaultText {
+        color: $white !important;
+    }
+
+    &.disabled {
+
+    }
 }
 
-.small {
-    height: 28px;
-}
-
-.medium {
-    height: 34px;
-}
-
-.large {
-    height: 45px;
-}

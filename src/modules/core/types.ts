@@ -4,3 +4,5 @@ export interface IUser {
 }
 
 export type TElementSize = 'small' | 'medium' | 'large';
+
+export type TComponentState = 'primary' | 'success' | 'error' | 'warning';
