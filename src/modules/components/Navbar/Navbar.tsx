@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button } from '../Button/Button';
-import './Navbar.scss';
 
 // interface INavbarProps {
 //     user?: IUser;

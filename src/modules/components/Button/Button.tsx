@@ -1,6 +1,5 @@
 import React from 'react';
 import { TElementSize } from '../../core/types';
-import './Button.scss';
 
 interface IButtonProps {
     text: string;
