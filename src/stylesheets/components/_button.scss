@@ -7,6 +7,14 @@
     transition: background-color 0.3s;
     padding: 0 8px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+
+    &.circle {
+        border-radius: 16px;
+    }
 
     &.small {
         height: 22px;
@@ -18,6 +26,7 @@
     
     &.large {
         height: 34px;
+        min-width: 34px
     }
 
     &.square {
@@ -68,8 +77,8 @@
         border-color: $default_warning_component;
         color: $default_warning_component;
         &:hover {
-            background-color: $default_warning_component;
-            border-color: $default_warning_component;
+            background-color: $default_warning_hover_component;
+            border-color: $default_warning_hover_component;
         }
         &:disabled {
             background-color: lighten($color: $default_warning_component, $amount: 20%);
