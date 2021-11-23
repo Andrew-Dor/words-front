@@ -32,6 +32,9 @@
             background-color: $default_primary_hover_component;
             border-color: $default_primary_hover_component;
         }
+        &:disabled {
+            background-color: lighten($color: $default_primary_component, $amount: 20%);
+        }
     }
 
     &.success {
@@ -41,6 +44,9 @@
         &:hover {
             background-color: $default_success_hover_component;
             border-color: $default_success_hover_component;
+        }
+        &:disabled {
+            background-color: lighten($color: $default_success_component, $amount: 20%);
         }
     }
 
@@ -52,6 +58,9 @@
             background-color: $default_error_hover_component;
             border-color: $default_error_hover_component;
         }
+        &:disabled {
+            background-color: lighten($color: $default_error_component, $amount: 20%);
+        }
     }
 
     &.warning {
@@ -62,6 +71,9 @@
             background-color: $default_warning_component;
             border-color: $default_warning_component;
         }
+        &:disabled {
+            background-color: lighten($color: $default_warning_component, $amount: 20%);
+        }
     }
 
     &.outline {
@@ -71,14 +83,13 @@
         &:hover {
             background-color: transparent;
         }
+        &:disabled {
+            background-color: transparent;
+        }
     }
 
     &.defaultText {
         color: $white !important;
-    }
-
-    &.disabled {
-
     }
 }
 
