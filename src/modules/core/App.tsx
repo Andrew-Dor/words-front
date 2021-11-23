@@ -1,10 +1,10 @@
 import React from 'react';
-import './App.scss';
+import { Navbar } from '../components/Navbar/Navbar';
 
-const App = function app(): JSX.Element {
+const App = (): JSX.Element => {
     return (
-        <div className="App">
-            <header className="App-header">START</header>
+        <div>
+            <Navbar />
         </div>
     );
 };
