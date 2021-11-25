@@ -34,55 +34,23 @@
     }
 
     &.primary {
-        background-color: $default_primary_component;
-        border-color: $default_primary_component;
         color: $default_primary_component;
-        &:hover {
-            background-color: $default_primary_hover_component;
-            border-color: $default_primary_hover_component;
-        }
-        &:disabled {
-            background-color: lighten($color: $default_primary_component, $amount: 20%);
-        }
+        @include variantComponentColors($default_primary_component);
     }
 
     &.success {
-        background-color: $default_success_component;
-        border-color: $default_success_component;
         color: $default_success_component;
-        &:hover {
-            background-color: $default_success_hover_component;
-            border-color: $default_success_hover_component;
-        }
-        &:disabled {
-            background-color: lighten($color: $default_success_component, $amount: 20%);
-        }
+        @include variantComponentColors($default_success_component);
     }
 
     &.error {
-        background-color: $default_error_component;
-        border-color: $default_error_component;
         color: $default_error_component;
-        &:hover {
-            background-color: $default_error_hover_component;
-            border-color: $default_error_hover_component;
-        }
-        &:disabled {
-            background-color: lighten($color: $default_error_component, $amount: 20%);
-        }
+        @include variantComponentColors($default_error_component);
     }
 
     &.warning {
-        background-color: $default_warning_component;
-        border-color: $default_warning_component;
         color: $default_warning_component;
-        &:hover {
-            background-color: $default_warning_hover_component;
-            border-color: $default_warning_hover_component;
-        }
-        &:disabled {
-            background-color: lighten($color: $default_warning_component, $amount: 20%);
-        }
+        @include variantComponentColors($default_warning_component);
     }
 
     &.outline {
