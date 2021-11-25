@@ -1,17 +1,45 @@
 import React from 'react';
-import { TiAdjustBrightness } from 'react-icons/ti';
-import { IoIosAirplane } from 'react-icons/io';
+import classnames from 'classnames';
 import { Button } from '../Button/Button';
+import { INavbarMenuItem, IUser } from '../../core/types';
 
-// interface INavbarProps {
-//     user?: IUser;
-// }
+interface INavbarProps {
+    user?: IUser;
+    square?: boolean;
+    menuItems?: INavbarMenuItem[];
+}
 
-export const Navbar = (): JSX.Element => {
-    // const isAuthorized: boolean = !!user;
+export const Navbar = ({ user, square, menuItems }: INavbarProps): JSX.Element => {
+    const isAuthorized = !!user;
+
+    const classes = classnames(
+        { navbar: true },
+        {
+            square,
+        },
+    );
+
     return (
-        <div className="navbar">
-            <p>Nav</p>
-        </div>
+        <nav className={classes}>
+            <p>Words project</p>
+            <div className="items">
+                {menuItems &&
+                    menuItems.map((item, i) => (
+                        <div role="button" tabIndex={i} key={item.id} onClick={item.action} onKeyDown={item.action}>
+                            {item.title}
+                        </div>
+                    ))}
+            </div>
+            <div>
+                {isAuthorized ? (
+                    <Button text="Logout" onClick={() => console.log('logout')} />
+                ) : (
+                    <div className="authButtons">
+                        <Button text="Login" outline onClick={() => console.log('login')} />
+                        <Button text="Get started" onClick={() => console.log('get started')} />
+                    </div>
+                )}
+            </div>
+        </nav>
     );
 };
