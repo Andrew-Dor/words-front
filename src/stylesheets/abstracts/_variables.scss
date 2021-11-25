@@ -10,14 +10,14 @@ $breakpoints: (
 $white: rgb(255, 255, 255);
 $black: rgb(0, 0, 0);
 
-$default_primary_component: rgb(69, 43, 213);
+$default_primary_component: rgb(9, 63, 250);
 $default_primary_hover_component: darken($color: $default_primary_component, $amount: 8%);
 
 $default_success_component: rgb(159, 194, 32);
 $default_success_hover_component: darken($color: $default_success_component, $amount: 8%);
 
-$default_error_component: rgb(225, 50, 56);
+$default_error_component: rgb(238, 2, 10);
 $default_error_hover_component: darken($color: $default_error_component, $amount: 8%);
 
-$default_warning_component: rgb(208, 140, 42);
+$default_warning_component: rgb(238, 184, 11);
 $default_warning_hover_component: darken($color: $default_warning_component, $amount: 8%);
