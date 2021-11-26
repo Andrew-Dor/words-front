@@ -5,7 +5,7 @@ import { TComponentState, TElementSize } from '../../core/types';
 interface IButtonProps {
     text: string;
     size?: TElementSize;
-    variant?: TComponentState;
+    color?: TComponentState;
     isSquare?: boolean;
     disabled?: boolean;
     outline?: boolean;
@@ -18,7 +18,7 @@ interface IButtonProps {
 export const Button = ({
     text,
     size = 'medium',
-    variant = 'primary',
+    color = 'primary',
     isSquare,
     disabled,
     outline,
@@ -31,7 +31,7 @@ export const Button = ({
         { button: true },
         { [`${size}`]: true },
         { square: isSquare },
-        { [`${variant}`]: true },
+        { [`${color}`]: true },
         { outline },
         { defaultText: !outline },
         { circle },
