@@ -1,0 +1,95 @@
+.inputWrapper {
+    position: relative;
+    height: min-content;
+    width: 300px;
+
+    .startIcon {
+        position: absolute;
+        top: 50%;
+        left: 4px;
+        z-index: 1;
+        transform: translateY(-50%);
+        height: 18px;
+        
+        svg {
+            fill: black;
+            height: 18px;
+            width: 18px;
+        }
+    }
+
+    .passwordIcon {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        left: auto;
+        right: 4px;
+        z-index: 1;
+        transform: translateY(-50%);
+        height: 18px;
+        padding-left: 4px;
+        
+        svg {
+            fill: black;
+            height: 18px;
+            width: 18px;
+        }
+    }
+}
+
+.input {
+    border-radius: 4px;
+    position: relative;
+    outline: none;
+    border: none;
+    padding: 4px 16px;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+
+    &::placeholder{
+        color: lightgray;
+        position: absolute;
+        opacity: 100;
+        transition: opacity 0.4s;
+    }
+
+    &:focus::placeholder {
+        opacity: 0;
+    }
+
+    &:focus~.passwordIcon {
+        border-left: 1px solid lightgrey;
+    }
+
+    &.inline {
+        border: none;
+        border-bottom: 2px solid gray;
+        background-color: transparent;
+        outline: none;
+        position: relative;
+        border-radius: 0;
+    }
+    &.inline~.focusBorder {
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background-color: $default_primary_component;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%,0);
+        transition: width 0.3s;
+    }
+    &.inline:focus~.focusBorder {
+        width: 100%;
+    }
+
+    &.iconInput {
+        padding-left: 32px;
+    }
+
+    &.passwordInput {
+        padding-right: 32px;
+    }
+
+}

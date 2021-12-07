@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classnames from 'classnames';
+import { IoIosAirplane } from 'react-icons/io';
 import { Button } from '../Button/Button';
 import { INavbarMenuItem, IUser } from '../../core/types';
+import { Input } from '../Input/Input';
 
 interface INavbarProps {
     user?: IUser;
@@ -19,6 +21,8 @@ export const Navbar = ({ user, square, menuItems }: INavbarProps): JSX.Element =
         },
     );
 
+    const [inputValue, setInputValue] = useState('');
+
     return (
         <nav className={classes}>
             <p>Words project</p>
@@ -35,6 +39,7 @@ export const Navbar = ({ user, square, menuItems }: INavbarProps): JSX.Element =
                     <Button text="Logout" onClick={() => console.log('logout')} />
                 ) : (
                     <div className="authButtons">
+                        <Input value={inputValue} placeholder="test" onChange={(value) => setInputValue(value)} />
                         <Button text="Login" outline onClick={() => console.log('login')} />
                         <Button text="Get started" onClick={() => console.log('get started')} />
                     </div>
