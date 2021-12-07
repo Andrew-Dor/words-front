@@ -1,0 +1,42 @@
+.theme-switch {
+    cursor: pointer;
+    position: relative;
+    height: 28px;
+    width: 52px;
+    background-color: var(--color-bg-primary);
+    border-radius: 16px;
+    padding: 4px;
+    box-sizing: border-box;
+    transition: background-color 0.3s;
+
+    .theme-switch-button {
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        left: 0;
+        background-color: var(--color-bg-secondary);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        transition: left 0.3s;
+    }
+
+    .theme-switch-icon-light {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+    }
+
+    .theme-switch-icon-dark {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+    }
+
+    &.theme-switch-dark {
+        .theme-switch-button {
+            left: 24px;
+        }
+    }
+}

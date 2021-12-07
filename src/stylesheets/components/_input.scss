@@ -38,6 +38,7 @@
 }
 
 .input {
+    background-color: var(--color-bg-primary);
     border-radius: 4px;
     position: relative;
     outline: none;
@@ -46,6 +47,8 @@
     border-radius: 10px;
     width: 100%;
     box-sizing: border-box;
+    color: var(--color-text);
+    transition: background-color 0.3s;
 
     &::placeholder{
         color: lightgray;
