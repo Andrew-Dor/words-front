@@ -8,9 +8,10 @@ interface IInputProps {
     placeholder?: string;
     type?: React.HTMLInputTypeAttribute;
     startIcon?: React.ReactElement;
+    onChange?: (value: string) => void;
 }
 
-export const Input = ({ value, type = 'text', inline, placeholder, startIcon }: IInputProps) => {
+export const Input = ({ value, type = 'text', inline, placeholder, startIcon, onChange }: IInputProps) => {
     const classes = classnames(
         {
             input: true,
@@ -38,7 +39,13 @@ export const Input = ({ value, type = 'text', inline, placeholder, startIcon }: 
     return (
         <div className="inputWrapper">
             <div className="startIcon">{startIcon}</div>
-            <input type={inputType} className={classes} placeholder={placeholder} />
+            <input
+                type={inputType}
+                className={classes}
+                placeholder={placeholder}
+                value={value}
+                onChange={(e) => onChange && onChange(e.target.value)}
+            />
             <span className="focusBorder" />
             {type === 'password' &&
                 (showPassword ? (

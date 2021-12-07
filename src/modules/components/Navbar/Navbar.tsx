@@ -39,7 +39,7 @@ export const Navbar = ({ user, square, menuItems }: INavbarProps): JSX.Element =
                     <Button text="Logout" onClick={() => console.log('logout')} />
                 ) : (
                     <div className="authButtons">
-                        <Input value={inputValue} placeholder="test" />
+                        <Input value={inputValue} placeholder="test" onChange={(value) => setInputValue(value)} />
                         <Button text="Login" outline onClick={() => console.log('login')} />
                         <Button text="Get started" onClick={() => console.log('get started')} />
                     </div>
