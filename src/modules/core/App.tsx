@@ -1,7 +1,7 @@
 import React from 'react';
 import { Footer } from '../layout/Footer/Footer';
 import { Navbar } from '../layout/Navbar/Navbar';
-import { Home } from '../pages/Home/Home';
+import { Main } from '../pages/Main/Main';
 
 const App = (): JSX.Element => {
     return (
@@ -24,7 +24,7 @@ const App = (): JSX.Element => {
                     },
                 ]}
             />
-            <Home />
+            <Main />
             <Footer />
         </>
     );
