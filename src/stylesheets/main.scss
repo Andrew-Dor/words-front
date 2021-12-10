@@ -15,20 +15,18 @@
   'base/base';
 
 // 4. Layout-related sections
-// @import
-//   'layout/header',
-//   'layout/footer';
+@import
+  'layout/navbar';
 
 // 5. Components
 @import
   'components/button',
-  'components/navbar',
   'components/input',
   'components/theme-switch';
 
 // 6. Page-specific styles
-// @import
-//   'pages/home';
+@import
+  'pages/home';
 
 // 7. Themes
 @import

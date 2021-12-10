@@ -1,9 +1,11 @@
 import React from 'react';
-import { Navbar } from '../components/Navbar/Navbar';
+import { Footer } from '../layout/Footer/Footer';
+import { Navbar } from '../layout/Navbar/Navbar';
+import { Home } from '../pages/Home/Home';
 
 const App = (): JSX.Element => {
     return (
-        <div>
+        <>
             <Navbar
                 menuItems={[
                     {
@@ -22,7 +24,9 @@ const App = (): JSX.Element => {
                     },
                 ]}
             />
-        </div>
+            <Home />
+            <Footer />
+        </>
     );
 };
 

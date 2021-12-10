@@ -14,3 +14,13 @@
     --color-bg-secondary: 	hsl(60, 81%, 8%);
     --color-text:	hsl(260, 60%, 99%);
   }
+
+html, body {
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

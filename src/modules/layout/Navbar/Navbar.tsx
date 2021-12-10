@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
-import { IoIosAirplane } from 'react-icons/io';
-import { Button } from '../Button/Button';
+import { Button } from '../../components/Button/Button';
 import { INavbarMenuItem, IUser } from '../../core/types';
-import { Input } from '../Input/Input';
-import { ThemeSwitch } from '../ThemeSwitch/ThemeSwitch';
+import { Input } from '../../components/Input/Input';
+import { ThemeSwitch } from '../../components/ThemeSwitch/ThemeSwitch';
 
 interface INavbarProps {
     user?: IUser;
@@ -25,7 +24,7 @@ export const Navbar = ({ user, square, menuItems }: INavbarProps): JSX.Element =
     const [inputValue, setInputValue] = useState('');
 
     return (
-        <nav className={classes}>
+        <header className={classes}>
             <p>Words project</p>
             <div className="items">
                 {menuItems &&
@@ -47,6 +46,6 @@ export const Navbar = ({ user, square, menuItems }: INavbarProps): JSX.Element =
                     </div>
                 )}
             </div>
-        </nav>
+        </header>
     );
 };
