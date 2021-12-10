@@ -1,0 +1,26 @@
+:root, [data-theme="default"] {
+    --color-bg-primary: hsl(225, 9%, 91%);
+    --color-bg-secondary: 	hsl(240, 60%, 99%);
+    --color-text:	hsl(270, 3%, 16%);
+  }
+  
+  [data-theme] {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text);
+  }
+  
+  [data-theme="dark"] {
+    --color-bg-primary: hsl(320, 2%, 29%);
+    --color-bg-secondary: 	hsl(60, 81%, 8%);
+    --color-text:	hsl(260, 60%, 99%);
+  }
+
+html, body {
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
