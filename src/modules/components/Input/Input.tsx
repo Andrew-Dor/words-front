@@ -8,11 +8,24 @@ interface IInputProps {
     placeholder?: string;
     type?: React.HTMLInputTypeAttribute;
     startIcon?: React.ReactElement;
+    fullWidth?: boolean;
+    className?: string;
     onChange?: (value: string) => void;
 }
 
-export const Input = ({ value, type = 'text', inline, placeholder, startIcon, onChange }: IInputProps) => {
-    const classes = classnames(
+export const Input = ({
+    value,
+    type = 'text',
+    inline,
+    placeholder,
+    startIcon,
+    fullWidth,
+    className,
+    onChange,
+}: IInputProps) => {
+    const wrapperClasses = classnames({ inputWrapper: true }, { fullWidth }, { [`${className}`]: className });
+
+    const inputClasses = classnames(
         {
             input: true,
         },
@@ -37,11 +50,11 @@ export const Input = ({ value, type = 'text', inline, placeholder, startIcon, on
     }, [type, showPassword]);
 
     return (
-        <div className="inputWrapper">
+        <div className={wrapperClasses}>
             <div className="startIcon">{startIcon}</div>
             <input
                 type={inputType}
-                className={classes}
+                className={inputClasses}
                 placeholder={placeholder}
                 value={value}
                 onChange={(e) => onChange && onChange(e.target.value)}

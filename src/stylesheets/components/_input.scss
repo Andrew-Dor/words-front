@@ -3,6 +3,10 @@
     height: min-content;
     width: 300px;
 
+    &.fullWidth {
+        width: 100%;
+    }
+
     .startIcon {
         position: absolute;
         top: 50%;
