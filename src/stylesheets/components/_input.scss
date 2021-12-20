@@ -39,6 +39,15 @@
             width: 18px;
         }
     }
+
+    .error-text {
+        position: absolute;
+        bottom: -16px;
+        width: fit-content;
+        left: 4px;
+        font-size: 12px;
+        color: $default_error_component;
+    }
 }
 
 .input {

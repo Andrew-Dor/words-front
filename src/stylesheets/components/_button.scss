@@ -68,5 +68,9 @@
     &.defaultText {
         color: $white !important;
     }
+
+    &.fullWidth {
+        width: 100%;
+    }
 }
 

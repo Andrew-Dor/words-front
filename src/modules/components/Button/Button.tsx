@@ -1,18 +1,21 @@
-import React from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
+import React, { ButtonHTMLAttributes } from 'react';
 import classnames from 'classnames';
 import { TComponentState, TElementSize } from '../../core/types';
 
-interface IButtonProps {
+interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     text: string;
     size?: TElementSize;
     color?: TComponentState;
     isSquare?: boolean;
-    disabled?: boolean;
     outline?: boolean;
     startIcon?: React.ReactElement;
     endIcon?: React.ReactElement;
     circle?: boolean;
-    onClick: () => void;
+    fullWidth?: boolean;
+    className?: string;
+    submit?: boolean;
+    onClick?: () => void;
 }
 
 export const Button = ({
@@ -20,12 +23,15 @@ export const Button = ({
     size = 'medium',
     color = 'primary',
     isSquare,
-    disabled,
     outline,
     startIcon,
     endIcon,
     circle,
+    fullWidth,
+    className,
     onClick,
+    submit,
+    ...props
 }: IButtonProps): JSX.Element => {
     const classes = classnames(
         { button: true },
@@ -35,10 +41,12 @@ export const Button = ({
         { outline },
         { defaultText: !outline },
         { circle },
+        { fullWidth },
+        { [`${className}`]: className },
     );
 
     return (
-        <button className={classes} onClick={onClick} type="button" disabled={disabled}>
+        <button type={submit ? 'submit' : 'button'} className={classes} onClick={onClick} {...props}>
             {startIcon}
             {text}
             {endIcon}

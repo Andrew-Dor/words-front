@@ -1,12 +1,9 @@
 .auth-block {
     position: absolute;
-    background-color: var(--color-bg-secondary);
     max-width: 600px;
-    border-radius: 14px;
-    top: 50%;
+    top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transform: translate(-50%, -40%);
     overflow: hidden;
 
     .auth-top-image {
@@ -23,7 +20,7 @@
 
     .auth-form-title {
         width: 100%;
-        font-size: 32px;
+        font-size: 42px;
         margin: 0 auto;
         text-align: center;
         margin-bottom: 16px;
@@ -31,7 +28,7 @@
 
     .auth-form-input {
         &:not(:last-child) {
-            margin-top: 16px;
+            margin-top: 24px;
         }
     }
 
@@ -43,6 +40,24 @@
         cursor: pointer;
         transition: color 0.3s;
         &:hover {
+            color: $default_primary_component;
+        }
+    }
+
+    .auth-submit-btn {
+        margin-top: 24px;
+    }
+
+    .auth-text-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        gap: 4px;
+
+        .auth-text-link-span {
+            display: block;
+            cursor: pointer;
             color: $default_primary_component;
         }
     }

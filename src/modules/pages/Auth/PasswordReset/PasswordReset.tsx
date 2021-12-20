@@ -1,12 +1,13 @@
 import React from 'react';
+import { PasswordResetForm } from './PasswordResetForm/PasswordResetForm';
 
 export const PasswordReset = (): JSX.Element => {
     return (
         <section>
-            <div className="login">
-                <img className="login-top-image" src="/images/login_bg.png" alt="Login" />
-                <div className="login-form" />
-                RESET
+            <div className="auth-block">
+                <div className="auth-form">
+                    <PasswordResetForm message="Password reset" />
+                </div>
             </div>
         </section>
     );

@@ -1,9 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router';
 import { Footer } from '../layout/Footer/Footer';
 import { Navbar } from '../layout/Navbar/Navbar';
 import { Main } from '../pages/Main/Main';
 
 const App = (): JSX.Element => {
+    const navigate = useNavigate();
+
     return (
         <>
             <Navbar
@@ -12,14 +15,14 @@ const App = (): JSX.Element => {
                         id: 'home',
                         title: 'Home',
                         action: () => {
-                            console.log('Home');
+                            navigate('/home');
                         },
                     },
                     {
                         id: 'dictionaries',
                         title: 'My dictionaries',
                         action: () => {
-                            console.log('dictionaries');
+                            navigate('/home');
                         },
                     },
                 ]}

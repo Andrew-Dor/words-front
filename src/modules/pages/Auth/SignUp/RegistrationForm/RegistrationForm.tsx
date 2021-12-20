@@ -5,21 +5,23 @@ import { useNavigate } from 'react-router';
 import { Button } from '../../../../components/Button/Button';
 import { Input } from '../../../../components/Input/Input';
 
-interface ILoginFormValues {
+interface IRegistrationFormValues {
+    name: string;
     email: string;
     password: string;
 }
 
-interface ILoginAdditionalProps {
+interface IRegistrationAdditionalProps {
     message: string;
 }
 
 const validationSchema = Yup.object().shape({
+    name: Yup.string().required('Name is required').min(3, 'Name is too short'),
     email: Yup.string().email('Invalid email').required('Email is required'),
     password: Yup.string().required('Password is required').min(6, 'Password is too short'),
 });
 
-const InnerForm = (props: ILoginAdditionalProps & FormikProps<ILoginFormValues>) => {
+const InnerForm = (props: IRegistrationAdditionalProps & FormikProps<IRegistrationFormValues>) => {
     const { touched, errors, isSubmitting, message, values, setFieldValue } = props;
 
     const navigate = useNavigate();
@@ -27,6 +29,16 @@ const InnerForm = (props: ILoginAdditionalProps & FormikProps<ILoginFormValues>)
     return (
         <Form>
             <h3 className="auth-form-title">{message}</h3>
+            <Input
+                className="auth-form-input"
+                value={values.name}
+                placeholder="Name"
+                inline
+                fullWidth
+                onChange={(value) => setFieldValue('name', value)}
+                errorText={touched.email && errors.email ? errors.email : ''}
+            />
+
             <Input
                 className="auth-form-input"
                 value={values.email}
@@ -49,43 +61,34 @@ const InnerForm = (props: ILoginAdditionalProps & FormikProps<ILoginFormValues>)
                 errorText={touched.password && errors.password ? errors.password : ''}
             />
 
-            <span
-                className="auth-link"
-                role="button"
-                onKeyDown={() => navigate('../password')}
-                onClick={() => navigate('../password')}
-                tabIndex={-1}
-            >
-                Forgot password?
-            </span>
-
-            <Button className="auth-submit-btn" text="Sign in" submit disabled={isSubmitting} fullWidth size="large" />
+            <Button className="auth-submit-btn" text="Sign up" submit disabled={isSubmitting} fullWidth size="large" />
 
             <div className="auth-text-link">
-                <p>Not a member?</p>
+                <p>Already a member?</p>
                 <span
                     className="auth-text-link-span"
                     role="button"
-                    onKeyDown={() => navigate('../signUp')}
-                    onClick={() => navigate('../signUp')}
+                    onKeyDown={() => navigate('../signIn')}
+                    onClick={() => navigate('../signIn')}
                     tabIndex={-1}
                 >
-                    Sign up!
+                    Sign in!
                 </span>
             </div>
         </Form>
     );
 };
 
-interface ILoginFormProps {
+interface IRegistrationFormProps {
     initialEmail?: string;
     message: string;
 }
 
-export const LoginForm = withFormik<ILoginFormProps, ILoginFormValues>({
+export const RegistrationForm = withFormik<IRegistrationFormProps, IRegistrationFormValues>({
     // Transform outer props into form values
     mapPropsToValues: (props) => {
         return {
+            name: '',
             email: props.initialEmail || '',
             password: '',
         };
@@ -94,7 +97,7 @@ export const LoginForm = withFormik<ILoginFormProps, ILoginFormValues>({
     validationSchema,
 
     handleSubmit: () => {
-        // get values from func props
+        // get values from props
         // do submitting things
     },
 })(InnerForm);

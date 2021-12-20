@@ -5,21 +5,19 @@ import { useNavigate } from 'react-router';
 import { Button } from '../../../../components/Button/Button';
 import { Input } from '../../../../components/Input/Input';
 
-interface ILoginFormValues {
+interface IPasswordResetFormValues {
     email: string;
-    password: string;
 }
 
-interface ILoginAdditionalProps {
+interface IPasswordResetAdditionalProps {
     message: string;
 }
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Email is required'),
-    password: Yup.string().required('Password is required').min(6, 'Password is too short'),
 });
 
-const InnerForm = (props: ILoginAdditionalProps & FormikProps<ILoginFormValues>) => {
+const InnerForm = (props: IPasswordResetAdditionalProps & FormikProps<IPasswordResetFormValues>) => {
     const { touched, errors, isSubmitting, message, values, setFieldValue } = props;
 
     const navigate = useNavigate();
@@ -38,51 +36,30 @@ const InnerForm = (props: ILoginAdditionalProps & FormikProps<ILoginFormValues>)
                 errorText={touched.email && errors.email ? errors.email : ''}
             />
 
-            <Input
-                className="auth-form-input"
-                value={values.password}
-                type="password"
-                placeholder="Password"
-                inline
-                fullWidth
-                onChange={(value) => setFieldValue('password', value)}
-                errorText={touched.password && errors.password ? errors.password : ''}
-            />
-
-            <span
-                className="auth-link"
-                role="button"
-                onKeyDown={() => navigate('../password')}
-                onClick={() => navigate('../password')}
-                tabIndex={-1}
-            >
-                Forgot password?
-            </span>
-
-            <Button className="auth-submit-btn" text="Sign in" submit disabled={isSubmitting} fullWidth size="large" />
+            <Button className="auth-submit-btn" text="Reset" submit disabled={isSubmitting} fullWidth size="large" />
 
             <div className="auth-text-link">
-                <p>Not a member?</p>
+                <p>Or</p>
                 <span
                     className="auth-text-link-span"
                     role="button"
-                    onKeyDown={() => navigate('../signUp')}
-                    onClick={() => navigate('../signUp')}
+                    onKeyDown={() => navigate('../signIn')}
+                    onClick={() => navigate('../signIn')}
                     tabIndex={-1}
                 >
-                    Sign up!
+                    Sign in
                 </span>
             </div>
         </Form>
     );
 };
 
-interface ILoginFormProps {
+interface IPasswordResetFormProps {
     initialEmail?: string;
     message: string;
 }
 
-export const LoginForm = withFormik<ILoginFormProps, ILoginFormValues>({
+export const PasswordResetForm = withFormik<IPasswordResetFormProps, IPasswordResetFormValues>({
     // Transform outer props into form values
     mapPropsToValues: (props) => {
         return {
@@ -94,7 +71,7 @@ export const LoginForm = withFormik<ILoginFormProps, ILoginFormValues>({
     validationSchema,
 
     handleSubmit: () => {
-        // get values from func props
+        // get values from prop
         // do submitting things
     },
 })(InnerForm);

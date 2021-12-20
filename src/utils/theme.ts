@@ -1,4 +1,4 @@
-export const getTheme = () => {
+export const getTheme = (): string => {
     try {
         return localStorage.getItem('wordsTheme') ?? 'default';
     } catch (e) {
@@ -6,7 +6,7 @@ export const getTheme = () => {
     }
 };
 
-export const setTheme = (theme: string) => {
+export const setTheme = (theme: string): boolean => {
     try {
         localStorage.setItem('wordsTheme', theme);
 
