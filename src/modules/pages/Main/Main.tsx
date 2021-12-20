@@ -1,8 +1,10 @@
 import React from 'react';
 import { Routes, Route } from 'react-router';
 import { Welcome } from '../Welcome/Welcome';
-import { Login } from '../Login/Login';
 import { Home } from '../Home/Home';
+import { SignIn } from '../Auth/SignIn/SignIn';
+import { SignUp } from '../Auth/SignUp/SignUp';
+import { PasswordReset } from '../Auth/PasswordReset/PasswordReset';
 
 export const Main = (): JSX.Element => {
     return (
@@ -10,7 +12,9 @@ export const Main = (): JSX.Element => {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/welcome" element={<Welcome />} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/signIn" element={<SignIn />} />
+                <Route path="/signUp" element={<SignUp />} />
+                <Route path="/password" element={<PasswordReset />} />
             </Routes>
         </main>
     );

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classnames from 'classnames';
+import { useNavigate } from 'react-router';
 import { Button } from '../../components/Button/Button';
 import { INavbarMenuItem, IUser } from '../../core/types';
-import { Input } from '../../components/Input/Input';
 import { ThemeSwitch } from '../../components/ThemeSwitch/ThemeSwitch';
 
 interface INavbarProps {
@@ -21,7 +21,7 @@ export const Navbar = ({ user, square, menuItems }: INavbarProps): JSX.Element =
         },
     );
 
-    const [inputValue, setInputValue] = useState('');
+    const navigate = useNavigate();
 
     return (
         <header className={classes}>
@@ -36,12 +36,11 @@ export const Navbar = ({ user, square, menuItems }: INavbarProps): JSX.Element =
             </div>
             <div>
                 {isAuthorized ? (
-                    <Button text="Logout" onClick={() => console.log('logout')} />
+                    <Button text="Logout" onClick={() => navigate('/welcome')} />
                 ) : (
                     <div className="authButtons">
-                        <Input value={inputValue} placeholder="test" onChange={(value) => setInputValue(value)} />
-                        <Button text="Login" outline onClick={() => console.log('login')} />
-                        <Button text="Get started" onClick={() => console.log('get started')} />
+                        <Button text="Sign in" outline onClick={() => navigate('/signIn')} />
+                        <Button text="Sign up" onClick={() => navigate('../signUp')} />
                         <ThemeSwitch />
                     </div>
                 )}
