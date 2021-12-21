@@ -4,8 +4,22 @@ import { Footer } from '../layout/Footer/Footer';
 import { Navbar } from '../layout/Navbar/Navbar';
 import { Main } from '../pages/Main/Main';
 
+import { useUserState } from './stores/userState';
+
 const App = (): JSX.Element => {
     const navigate = useNavigate();
+
+    const userState = useUserState();
+
+    if (userState.promised) {
+        // TODO: add loader
+        return <p>Loading</p>;
+    }
+
+    if (userState.error) {
+        // TODO: ERROR PAGE
+        return <p>Error</p>;
+    }
 
     return (
         <>
@@ -26,8 +40,10 @@ const App = (): JSX.Element => {
                         },
                     },
                 ]}
+                user={userState.value ? userState.value : undefined}
             />
-            <Main />
+            {/* <Main isAuthenticated={!userState.value} /> */}
+            <Main isAuthenticated={!!userState.value} />
             <Footer />
         </>
     );

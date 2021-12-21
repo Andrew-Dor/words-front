@@ -1,6 +1,7 @@
 export interface IUser {
     name: string;
     email: string;
+    avatar?: string;
 }
 
 export type TElementSize = 'small' | 'medium' | 'large';

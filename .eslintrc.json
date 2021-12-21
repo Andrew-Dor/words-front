@@ -36,6 +36,7 @@
             }
         ],
         "no-shadow": "off",
+        "react/jsx-props-no-spreading": "off",
         "@typescript-eslint/no-shadow": ["error"],
         "import/prefer-default-export": "off",
         "react/function-component-definition": [2, {
