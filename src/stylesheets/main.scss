@@ -18,6 +18,7 @@
 @use 'components/button';
 @use 'components/input';
 @use 'components/theme-switch';
+@use 'components/_menu-button.scss';
 
 // 6. Page-specific styles
 @use 'pages/home';
