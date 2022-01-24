@@ -12,7 +12,7 @@ interface INavbarProps {
 }
 
 export const Navbar = ({ user, square, menuItems }: INavbarProps): JSX.Element => {
-    const isAuthorized = !!user;
+    const isAuthorized = !user;
 
     const classes = classnames(
         { navbar: true },

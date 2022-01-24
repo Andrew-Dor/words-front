@@ -42,8 +42,8 @@ const App = (): JSX.Element => {
                 ]}
                 user={userState.value ? userState.value : undefined}
             />
-            {/* <Main isAuthenticated={!userState.value} /> */}
-            <Main isAuthenticated={!!userState.value} />
+            <Main isAuthenticated={!userState.value} />
+            {/* <Main isAuthenticated={!!userState.value} /> */}
             <Footer />
         </>
     );

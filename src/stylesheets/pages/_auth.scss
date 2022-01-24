@@ -1,3 +1,5 @@
+@use "../abstracts/variables";
+
 .auth-block {
     position: absolute;
     max-width: 600px;
@@ -40,7 +42,7 @@
         cursor: pointer;
         transition: color 0.3s;
         &:hover {
-            color: $default_primary_component;
+            color: variables.$default_primary_component;
         }
     }
 
@@ -58,7 +60,7 @@
         .auth-text-link-span {
             display: block;
             cursor: pointer;
-            color: $default_primary_component;
+            color: variables.$default_primary_component;
         }
     }
 }

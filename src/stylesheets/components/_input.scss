@@ -1,3 +1,5 @@
+@use "../abstracts/variables";
+
 .inputWrapper {
     position: relative;
     height: min-content;
@@ -46,7 +48,7 @@
         width: fit-content;
         left: 4px;
         font-size: 12px;
-        color: $default_error_component;
+        color: variables.$default_error_component;
     }
 }
 
@@ -90,7 +92,7 @@
         position: absolute;
         width: 0;
         height: 2px;
-        background-color: $default_primary_component;
+        background-color: variables.$default_primary_component;
         bottom: 0;
         left: 50%;
         transform: translate(-50%,0);
