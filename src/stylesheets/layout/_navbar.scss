@@ -31,7 +31,9 @@
     }
 
     @include mq.mq( $until: desktop ) {
-        background-color: red;
+        .items {
+            display: none;
+        }
     }
 }
 

@@ -1,3 +1,4 @@
+@use '/node_modules/sass-mq/mq';
 @use "../abstracts/variables";
 
 .auth-block {
@@ -18,6 +19,7 @@
         width: 400px;
         display: flex;
         flex-direction: column;
+        position: relative;
     }
 
     .auth-form-title {
@@ -61,6 +63,22 @@
             display: block;
             cursor: pointer;
             color: variables.$default_primary_component;
+        }
+    }
+
+    @include mq.mq( $until: desktop ) {
+        max-width: 320px;
+
+        .auth-form {
+            width: 320px;
+            max-width: 320px;
+            overflow: hidden;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        .auth-form-title {
+            font-size: 32px;
         }
     }
 }
