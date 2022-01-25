@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import { Button } from '../../components/Button/Button';
 import { INavbarMenuItem, IUser } from '../../core/types';
 import { ThemeSwitch } from '../../components/ThemeSwitch/ThemeSwitch';
+import { MenuButton } from '../../components/MenuButton/MenuButton';
 
 interface INavbarProps {
     user?: IUser;
@@ -12,7 +13,7 @@ interface INavbarProps {
 }
 
 export const Navbar = ({ user, square, menuItems }: INavbarProps): JSX.Element => {
-    const isAuthorized = !!user;
+    const isAuthorized = !user;
 
     const classes = classnames(
         { navbar: true },
@@ -25,7 +26,7 @@ export const Navbar = ({ user, square, menuItems }: INavbarProps): JSX.Element =
 
     return (
         <header className={classes}>
-            <p>Words project</p>
+            <MenuButton />
             <div className="items">
                 {menuItems &&
                     menuItems.map((item, i) => (

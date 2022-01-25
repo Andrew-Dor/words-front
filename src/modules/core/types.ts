@@ -13,3 +13,7 @@ export interface INavbarMenuItem {
     title: string;
     action: () => void;
 }
+
+export interface IAppSettings {
+    isSidebarOpened: boolean;
+}

@@ -1,9 +1,12 @@
+@use "../abstracts/mixins";
+@use "../abstracts/variables";
+
 .button {
     cursor: pointer;
     background-color: red;
     border-radius: 8px;
     border: none;
-    color: $white;
+    color: variables.$white;
     transition: background-color 0.3s;
     padding: 0 8px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -34,23 +37,23 @@
     }
 
     &.primary {
-        color: $default_primary_component;
-        @include variantComponentColors($default_primary_component);
+        color: variables.$default_primary_component;
+        @include mixins.variantComponentColors(variables.$default_primary_component);
     }
 
     &.success {
-        color: $default_success_component;
-        @include variantComponentColors($default_success_component);
+        color: variables.$default_success_component;
+        @include mixins.variantComponentColors(variables.$default_success_component);
     }
 
     &.error {
-        color: $default_error_component;
-        @include variantComponentColors($default_error_component);
+        color: variables.$default_error_component;
+        @include mixins.variantComponentColors(variables.$default_error_component);
     }
 
     &.warning {
-        color: $default_warning_component;
-        @include variantComponentColors($default_warning_component);
+        color: variables.$default_warning_component;
+        @include mixins.variantComponentColors(variables.$default_warning_component);
     }
 
     &.outline {
@@ -66,7 +69,7 @@
     }
 
     &.defaultText {
-        color: $white !important;
+        color: variables.$white !important;
     }
 
     &.fullWidth {

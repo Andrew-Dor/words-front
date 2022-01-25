@@ -1,3 +1,6 @@
+@use '/node_modules/sass-mq/mq';
+@use "../abstracts/variables";
+
 .auth-block {
     position: absolute;
     max-width: 600px;
@@ -16,6 +19,7 @@
         width: 400px;
         display: flex;
         flex-direction: column;
+        position: relative;
     }
 
     .auth-form-title {
@@ -40,7 +44,7 @@
         cursor: pointer;
         transition: color 0.3s;
         &:hover {
-            color: $default_primary_component;
+            color: variables.$default_primary_component;
         }
     }
 
@@ -58,7 +62,23 @@
         .auth-text-link-span {
             display: block;
             cursor: pointer;
-            color: $default_primary_component;
+            color: variables.$default_primary_component;
+        }
+    }
+
+    @include mq.mq( $until: desktop ) {
+        max-width: 320px;
+
+        .auth-form {
+            width: 320px;
+            max-width: 320px;
+            overflow: hidden;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+
+        .auth-form-title {
+            font-size: 32px;
         }
     }
 }

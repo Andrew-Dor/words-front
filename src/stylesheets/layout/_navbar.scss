@@ -1,5 +1,9 @@
+@use '/node_modules/sass-mq/mq';
+@use '../abstracts/variables';
+
 .navbar {
     height: 50px;
+    min-height: 50px;
     padding: 0 16px;
     background-color: cornflowerblue;
     display: flex;
@@ -25,4 +29,11 @@
     &.square {
         border-radius: 0;
     }
+
+    @include mq.mq( $until: desktop ) {
+        .items {
+            display: none;
+        }
+    }
 }
+
