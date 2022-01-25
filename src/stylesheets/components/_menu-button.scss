@@ -4,6 +4,7 @@
     background: none;
     border: none;
     position: relative;
+    z-index: 11;
 
     svg {
         height: 40px;
@@ -22,7 +23,7 @@
     }
     .line {
         fill: none;
-        stroke: var(--color-bg-primary);
+        stroke: var(--color-text);
         stroke-width: 6px;
         stroke-linecap: round;
         stroke-linejoin: round;

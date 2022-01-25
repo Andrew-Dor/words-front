@@ -1,16 +1,14 @@
 import React from 'react';
 import classnames from 'classnames';
+import { useAppState } from '../../core/stores/appStore';
 
-interface IMenuButtonProps {
-    isOpened: boolean;
-    toggleMenuState: () => void;
-}
+export const MenuButton = (): JSX.Element => {
+    const { isSidebarOpened } = useAppState();
 
-export const MenuButton = ({ isOpened, toggleMenuState }: IMenuButtonProps): JSX.Element => {
-    const classes = classnames({ 'menu-button': true }, { active: isOpened });
+    const classes = classnames({ 'menu-button': true }, { active: isSidebarOpened.get() });
 
     return (
-        <button type="button" className={classes} onClick={toggleMenuState}>
+        <button type="button" className={classes} onClick={() => isSidebarOpened.set(!isSidebarOpened.get())}>
             <svg className="burger" version="1.1" height="40" width="40" viewBox="0 0 100 100">
                 <path className="line line1" d="M 30,65 H 70" />
                 <path

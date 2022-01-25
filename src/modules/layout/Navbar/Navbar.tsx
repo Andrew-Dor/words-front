@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 import { useNavigate } from 'react-router';
 import { Button } from '../../components/Button/Button';
@@ -22,13 +22,11 @@ export const Navbar = ({ user, square, menuItems }: INavbarProps): JSX.Element =
         },
     );
 
-    const [sideBarState, setSideBarState] = useState(false);
-
     const navigate = useNavigate();
 
     return (
         <header className={classes}>
-            <MenuButton isOpened={sideBarState} toggleMenuState={() => setSideBarState(!sideBarState)} />
+            <MenuButton />
             <div className="items">
                 {menuItems &&
                     menuItems.map((item, i) => (
