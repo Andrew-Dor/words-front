@@ -63,7 +63,7 @@ const App = (): JSX.Element => {
                         },
                     },
                 ]}
-                user={userState.value ? userState.value : undefined}
+                user={userState.get() ?? undefined}
             />
             <Main isAuthenticated={!!userState.get()?.name} />
             <Sidebar />
