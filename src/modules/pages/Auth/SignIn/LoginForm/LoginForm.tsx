@@ -80,6 +80,7 @@ const InnerForm = (props: ILoginAdditionalProps & FormikProps<ILoginFormValues>)
 interface ILoginFormProps {
     initialEmail?: string;
     message: string;
+    onSubmit: (email: string, password: string) => void;
 }
 
 export const LoginForm = withFormik<ILoginFormProps, ILoginFormValues>({
@@ -93,8 +94,10 @@ export const LoginForm = withFormik<ILoginFormProps, ILoginFormValues>({
 
     validationSchema,
 
-    handleSubmit: () => {
-        // get values from func props
-        // do submitting things
+    handleSubmit: async (looginProps, { setSubmitting, props }) => {
+        const { onSubmit } = props;
+        const { email, password } = looginProps;
+        await onSubmit(email, password);
+        setSubmitting(false);
     },
 })(InnerForm);

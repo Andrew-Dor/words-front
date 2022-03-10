@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router';
+import { gql, useQuery } from '@apollo/client';
 import { Footer } from '../layout/Footer/Footer';
 import { Navbar } from '../layout/Navbar/Navbar';
 import { Sidebar } from '../layout/Sidebar/Sidebar';
@@ -8,9 +9,30 @@ import { Main } from '../pages/Main/Main';
 import { useUserState } from './stores/userState';
 
 const App = (): JSX.Element => {
+    const SIGN_IN = gql`
+        query signIn {
+            signIn(params: { email: "test1@test.com", password: "123Test" }) {
+                email
+                name
+            }
+        }
+    `;
+
     const navigate = useNavigate();
 
     const userState = useUserState();
+
+    const { loading, error, data } = useQuery(SIGN_IN);
+
+    useEffect(() => {
+        console.log('GET DATA', JSON.stringify(data));
+        if (data?.signIn) {
+            userState.set({
+                name: data.signIn.name,
+                email: data.signIn.email,
+            });
+        }
+    }, [data]);
 
     if (userState.promised) {
         // TODO: add loader
@@ -43,7 +65,7 @@ const App = (): JSX.Element => {
                 ]}
                 user={userState.value ? userState.value : undefined}
             />
-            <Main isAuthenticated={!userState.value} />
+            <Main isAuthenticated={!!userState.get()?.name} />
             <Sidebar />
             {/* <Main isAuthenticated={!!userState.value} /> */}
             <Footer />

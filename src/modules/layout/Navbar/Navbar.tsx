@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classnames from 'classnames';
 import { useNavigate } from 'react-router';
+import { gql, useMutation } from '@apollo/client';
 import { Button } from '../../components/Button/Button';
 import { INavbarMenuItem, IUser } from '../../core/types';
 import { ThemeSwitch } from '../../components/ThemeSwitch/ThemeSwitch';
@@ -24,6 +25,28 @@ export const Navbar = ({ user, square, menuItems }: INavbarProps): JSX.Element =
 
     const navigate = useNavigate();
 
+    const TEST = gql`
+        mutation test {
+            createDictionary(params: { name: "test", description: "test" }) {
+                _id
+            }
+        }
+    `;
+
+    const [mutate, { data, error }] = useMutation(TEST);
+
+    const testMutate = async () => {
+        try {
+            mutate();
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        console.log(error);
+    }, [error]);
+
     return (
         <header className={classes}>
             <MenuButton />
@@ -42,6 +65,7 @@ export const Navbar = ({ user, square, menuItems }: INavbarProps): JSX.Element =
                     <div className="authButtons">
                         <Button text="Sign in" outline onClick={() => navigate('/signIn')} />
                         <Button text="Sign up" onClick={() => navigate('../signUp')} />
+                        <Button text="TEST REQ" onClick={testMutate} />
                         <ThemeSwitch />
                     </div>
                 )}
