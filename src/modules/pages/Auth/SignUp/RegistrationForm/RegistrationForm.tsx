@@ -82,6 +82,7 @@ const InnerForm = (props: IRegistrationAdditionalProps & FormikProps<IRegistrati
 interface IRegistrationFormProps {
     initialEmail?: string;
     message: string;
+    onSubmit: (email: string, password: string, name: string) => void;
 }
 
 export const RegistrationForm = withFormik<IRegistrationFormProps, IRegistrationFormValues>({
@@ -96,8 +97,10 @@ export const RegistrationForm = withFormik<IRegistrationFormProps, IRegistration
 
     validationSchema,
 
-    handleSubmit: () => {
-        // get values from props
-        // do submitting things
+    handleSubmit: async (registrationProps, { setSubmitting, props }) => {
+        const { onSubmit } = props;
+        const { email, password, name } = registrationProps;
+        await onSubmit(email, password, name);
+        setSubmitting(false);
     },
 })(InnerForm);

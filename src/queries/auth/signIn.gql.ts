@@ -5,6 +5,7 @@ export const SIGN_IN = gql`
         signIn(params: { email: $email, password: $password }) {
             email
             name
+            role
         }
     }
 `;

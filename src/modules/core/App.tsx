@@ -9,9 +9,11 @@ import { Main } from '../pages/Main/Main';
 import { useUserState } from './stores/userState';
 
 const App = (): JSX.Element => {
-    const SIGN_IN = gql`
-        query signIn {
-            signIn(params: { email: "test1@test.com", password: "123Test" }) {
+    // signIn(params: { email: "test1@test.com", password: "123Test" }) {
+
+    const GET_USER_INFO = gql`
+        query getUserInfo {
+            getUserInfo {
                 email
                 name
             }
@@ -22,14 +24,13 @@ const App = (): JSX.Element => {
 
     const userState = useUserState();
 
-    const { loading, error, data } = useQuery(SIGN_IN);
+    const { data } = useQuery(GET_USER_INFO);
 
     useEffect(() => {
-        console.log('GET DATA', JSON.stringify(data));
-        if (data?.signIn) {
+        if (data?.getUserInfo) {
             userState.set({
-                name: data.signIn.name,
-                email: data.signIn.email,
+                name: data.getUserInfo.name,
+                email: data.getUserInfo.email,
             });
         }
     }, [data]);
