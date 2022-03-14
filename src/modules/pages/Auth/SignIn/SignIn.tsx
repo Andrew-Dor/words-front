@@ -6,7 +6,9 @@ import { useUserState } from '../../../core/stores/userState';
 import { LoginForm } from './LoginForm/LoginForm';
 
 export const SignIn = (): JSX.Element => {
-    const [login, { loading, error, data }] = useLazyQuery(SIGN_IN);
+    const [login, { data }] = useLazyQuery(SIGN_IN, {
+        errorPolicy: 'all',
+    });
 
     const userState = useUserState();
     const navigate = useNavigate();
