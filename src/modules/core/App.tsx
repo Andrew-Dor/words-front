@@ -68,7 +68,6 @@ const App = (): JSX.Element => {
             />
             <Main isAuthenticated={!!userState.get()?.name} />
             <Sidebar />
-            {/* <Main isAuthenticated={!!userState.value} /> */}
             <Footer />
         </>
     );
