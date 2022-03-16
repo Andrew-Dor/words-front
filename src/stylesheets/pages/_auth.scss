@@ -48,6 +48,11 @@
         }
     }
 
+    .auth-error-msg {
+        display: block;
+        color: variables.$default_error_component; 
+    }
+
     .auth-submit-btn {
         margin-top: 24px;
     }

@@ -10,8 +10,6 @@ export const SignUp = (): JSX.Element => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // eslint-disable-next-line
-        debugger
         if (data?.signUp) {
             navigate('/signIn');
         }
