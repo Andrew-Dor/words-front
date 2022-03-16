@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classnames from 'classnames';
 import { useNavigate } from 'react-router';
+import { gql, useLazyQuery, useMutation } from '@apollo/client';
 import { Button } from '../../components/Button/Button';
 import { INavbarMenuItem, IUser } from '../../core/types';
 import { ThemeSwitch } from '../../components/ThemeSwitch/ThemeSwitch';
 import { MenuButton } from '../../components/MenuButton/MenuButton';
+import { LOG_OUT } from '../../../queries/auth/logOut.gql';
+import { useUserState } from '../../core/stores/userState';
 
 interface INavbarProps {
     user?: IUser;
@@ -13,7 +16,7 @@ interface INavbarProps {
 }
 
 export const Navbar = ({ user, square, menuItems }: INavbarProps): JSX.Element => {
-    const isAuthorized = !user;
+    const isAuthorized = !!user;
 
     const classes = classnames(
         { navbar: true },
@@ -22,7 +25,38 @@ export const Navbar = ({ user, square, menuItems }: INavbarProps): JSX.Element =
         },
     );
 
+    const userState = useUserState();
     const navigate = useNavigate();
+
+    const TEST = gql`
+        mutation test {
+            createDictionary(params: { name: "test", description: "test" }) {
+                _id
+            }
+        }
+    `;
+
+    const [mutate, { data, error }] = useMutation(TEST);
+    const [logOut, { data: logOutData }] = useLazyQuery(LOG_OUT);
+
+    const testMutate = async () => {
+        try {
+            mutate();
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        console.log(error);
+    }, [error]);
+
+    useEffect(() => {
+        if (logOutData) {
+            userState.set(null);
+            navigate('/welcome');
+        }
+    }, [logOutData]);
 
     return (
         <header className={classes}>
@@ -36,15 +70,20 @@ export const Navbar = ({ user, square, menuItems }: INavbarProps): JSX.Element =
                     ))}
             </div>
             <div>
-                {isAuthorized ? (
-                    <Button text="Logout" onClick={() => navigate('/welcome')} />
-                ) : (
-                    <div className="authButtons">
-                        <Button text="Sign in" outline onClick={() => navigate('/signIn')} />
-                        <Button text="Sign up" onClick={() => navigate('../signUp')} />
-                        <ThemeSwitch />
-                    </div>
-                )}
+                <div className="authButtons">
+                    {isAuthorized ? (
+                        <>
+                            <Button text="Log out" onClick={logOut} />
+                            <Button text="TEST REQ" onClick={testMutate} />
+                        </>
+                    ) : (
+                        <>
+                            <Button text="Sign in" outline onClick={() => navigate('/signIn')} />
+                            <Button text="Sign up" onClick={() => navigate('../signUp')} />
+                        </>
+                    )}
+                    <ThemeSwitch />
+                </div>
             </div>
         </header>
     );
