@@ -24,7 +24,7 @@ const App = (): JSX.Element => {
 
     const userState = useUserState();
 
-    const { data } = useQuery(GET_USER_INFO);
+    const { data, loading } = useQuery(GET_USER_INFO);
 
     useEffect(() => {
         if (data?.getUserInfo) {
@@ -34,16 +34,6 @@ const App = (): JSX.Element => {
             });
         }
     }, [data]);
-
-    if (userState.promised) {
-        // TODO: add loader
-        return <p>Loading</p>;
-    }
-
-    if (userState.error) {
-        // TODO: ERROR PAGE
-        return <p>Error</p>;
-    }
 
     return (
         <>
@@ -66,7 +56,7 @@ const App = (): JSX.Element => {
                 ]}
                 user={userState.get() ?? undefined}
             />
-            <Main isAuthenticated={!!userState.get()?.name} />
+            <Main isAuthenticated={!!userState.get()?.name} isLoading={loading} />
             <Sidebar />
             <Footer />
         </>

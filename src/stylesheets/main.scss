@@ -20,6 +20,7 @@
 @use 'components/input';
 @use 'components/theme-switch';
 @use 'components/_menu-button.scss';
+@use 'components/loader';
 
 // 6. Page-specific styles
 @use 'pages/home';
